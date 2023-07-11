@@ -18,4 +18,8 @@ export class TodoComponent implements OnInit {
       todos => this.todos = todos
     );
   }
+
+  handleTodoAdded(todo: Todo) {
+    this.todos.push(todo);
+  }
 }

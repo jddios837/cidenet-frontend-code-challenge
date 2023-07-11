@@ -7,10 +7,10 @@ import { Observable, of } from 'rxjs';
 })
 export class TodoService {
   todos: Todo[] = [
-    { "name": "Task1", "description": "Task 1", "isFinish": true },
-    { "name": "Task2", "description": "Task 2", "isFinish": false },
-    { "name": "Task3", "description": "Task 3", "isFinish": true },
-    { "name": "Task4", "description": "Task 4", "isFinish": false },
+    { "id": 1, "name": "Task1", "description": "Task 1", "isFinish": true },
+    { "id": 2, "name": "Task2", "description": "Task 2", "isFinish": false },
+    { "id": 3, "name": "Task3", "description": "Task 3", "isFinish": true },
+    { "id": 4, "name": "Task4", "description": "Task 4", "isFinish": false },
   ];
   constructor() { }
 
