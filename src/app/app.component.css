@@ -1,0 +1,16 @@
+.container {
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.active {
+  background-color: #00b0ff;
+  color: white;
+}
