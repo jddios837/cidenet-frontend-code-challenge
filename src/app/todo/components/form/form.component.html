@@ -1,7 +1,21 @@
-<form [formGroup]="todoForm" (ngSubmit)="addTodo()">
-  <input formControlName="name" placeholder="Name" />
-  <br/>
-  <input formControlName="description" placeholder="Description" />
-  <br/>
-  <button type="submit">Add Todo</button>
+<form [formGroup]="todoForm" class="example-form" (ngSubmit)="addTodo()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput formControlName="name" [errorStateMatcher]="matcher"
+           placeholder="Todo Name">
+    <mat-error *ngIf="todoForm.get('name')?.invalid">
+      Name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input type="text" matInput formControlName="description" [errorStateMatcher]="matcher"
+           placeholder="Todo Description">
+    <mat-error *ngIf="todoForm.get('description')?.invalid">
+      Description is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="todoForm.invalid">Save</button>
 </form>

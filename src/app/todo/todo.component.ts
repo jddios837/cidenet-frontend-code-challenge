@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ChangeDetectorRef} from '@angular/core';
 import {TodoService} from "./todo.service";
 import {Todo} from "./todo.model";
 
@@ -7,19 +7,12 @@ import {Todo} from "./todo.model";
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
-export class TodoComponent implements OnInit {
-  todos: Todo[] = [];
-
-  constructor(private todoService: TodoService) {
-  }
-
-  ngOnInit() {
-    this.todoService.getTodos().subscribe(
-      todos => this.todos = todos
-    );
+export class TodoComponent {
+  constructor(private todoService: TodoService, private changeDetection: ChangeDetectorRef) {
   }
 
   handleTodoAdded(todo: Todo) {
-    this.todos.push(todo);
+    this.todoService.addTodo(todo);
+    this.changeDetection.markForCheck();
   }
 }

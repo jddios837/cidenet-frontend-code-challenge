@@ -1,18 +1,33 @@
-<table>
-  <thead>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Is Done</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let todo of todos">
-    <td>{{ todo.id }}</td>
-    <td>{{ todo.name }}</td>
-    <td>{{ todo.description }}</td>
-    <td>{{ todo.isFinish ? 'Yes' : 'No' }}</td>
-  </tr>
-  </tbody>
+<br/>
+<mat-form-field appearance="outline">
+  <mat-label>Filter</mat-label>
+  <input matInput placeholder="Enter a keyword" [(ngModel)]="filterValue" (input)="applyFilter()" />
+</mat-form-field>
+
+<br/>
+<table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" >
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="isDone">
+    <th mat-header-cell *matHeaderCellDef> Is Done </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon>{{ element.isDone ? 'done' : 'clear' }}</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

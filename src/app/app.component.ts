@@ -8,7 +8,9 @@ import {SharedService} from "./shared.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private titleService: Title, private sharedService: SharedService) { }
+  constructor(private titleService: Title, private sharedService: SharedService) {
+    this.titleService.setTitle('Todo Section');
+  }
 
   ngOnInit() {
     this.sharedService.dataEmitter.subscribe(data => {
